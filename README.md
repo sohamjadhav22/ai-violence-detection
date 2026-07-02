@@ -24,6 +24,11 @@ A production-ready foundation for a real-time violence detection platform built 
 - trained_models: saved model weights
 - docker/: deployment resources
 
+## Architecture Overview
+- Cameras feed live streams into the backend inference pipeline.
+- YOLOv8 detects persons, while a violence classifier evaluates suspicious activity.
+- Incidents are saved to the database, alerts are emitted through WebSockets, and the React dashboard displays live status.
+
 ## Quick Start
 ### Backend
 ```bash
