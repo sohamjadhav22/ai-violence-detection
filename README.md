@@ -1,34 +1,54 @@
-# Violence Detection System using CCTV Surveillance
+# Violence Detection System
 
-This project provides a production-ready foundation for a real-time violence detection platform using CCTV streams, YOLOv8 for person detection, a violence classifier, FastAPI for the backend, React/Vite for the frontend, PostgreSQL for persistence, Redis/Celery for background jobs, and Docker Compose for deployment.
+A production-ready foundation for a real-time violence detection platform built for CCTV surveillance. The system combines computer vision, deep learning, a FastAPI backend, a React dashboard, PostgreSQL, Redis, WebSockets, and Docker-based deployment.
 
-## Architecture
-- Backend: FastAPI, SQLAlchemy, JWT auth, WebSockets, Celery
-- AI: YOLOv8 + PyTorch-based violence detection stub with training pipeline
-- Frontend: React + Vite + Tailwind
-- Infrastructure: PostgreSQL, Redis, Docker Compose
+## Features
+- JWT authentication and role-based access
+- Multiple camera support with RTSP/USB/IP camera configuration
+- Human detection with YOLOv8
+- Violence detection workflow with alert generation
+- Incident storage with image/video artifacts
+- Live dashboard for monitoring and incident history
+- WebSocket live alerts and background task handling
 
-## Folder Structure
-- backend/app: API, auth, models, services, AI modules
-- frontend/src: React app
+## Tech Stack
+- Backend: FastAPI, SQLAlchemy, PostgreSQL, Redis, Celery, WebSockets
+- AI: YOLOv8, PyTorch, OpenCV
+- Frontend: React, Vite, Tailwind CSS, Axios
+- Deployment: Docker, Docker Compose
+
+## Project Structure
+- backend/app: API, auth, database models, services, AI modules
+- frontend/src: dashboard UI and frontend components
 - datasets: training data location
-- trained_models: model weights
+- trained_models: saved model weights
+- docker/: deployment resources
 
-## Run Locally
-1. Create and activate a Python virtual environment.
-2. Install backend dependencies:
-   `pip install -r backend/requirements.txt`
-3. Start PostgreSQL and Redis (or use Docker Compose).
-4. Run the backend:
-   `uvicorn app.main:app --reload --app-dir backend`
-5. Install frontend dependencies:
-   `cd frontend && npm install && npm run dev`
+## Quick Start
+### Backend
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+pip install -r backend/requirements.txt
+uvicorn app.main:app --reload --app-dir backend
+```
 
-## Docker Compose
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Docker Compose
 ```bash
 docker compose up --build
 ```
 
+## API Docs
+Once the backend is running, Swagger documentation is available at:
+- http://localhost:8000/docs
+
 ## Notes
-- The provided AI model is a lightweight placeholder and should be replaced with a trained CNN+LSTM or 3D CNN model using the RWF-2000 or RLVS dataset for production.
-- The API documentation is available at `/docs`.
+- The current AI module is a functional scaffold and should be replaced with a trained CNN+LSTM or 3D CNN model using the RWF-2000 or RLVS dataset for production-grade accuracy.
+- The system is designed as a strong foundation for enterprise surveillance and monitoring workflows.
